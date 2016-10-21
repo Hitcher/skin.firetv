@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="window" id="1110">
+	<!-- Music -->
+	<menucontrol>1000</menucontrol>
+	<defaultcontrol>101</defaultcontrol>
+	<controls>
+		<!-- Background image -->
+		<control type="image">
+			<include>FullscreenDimensions</include>
+			<texture>special://skin/extras/backgrounds/bg_music.png</texture>
+		</control>
+		<!-- Naviagtion bar -->
+		<control type="grouplist" id="100">
+			<left>96</left>
+			<top>42</top>
+			<height>104</height>
+			<onup>noop</onup>
+			<ondown>200</ondown>
+			<itemgap>80</itemgap>
+			<scrolltime>0</scrolltime>
+			<orientation>horizontal</orientation>
+			<control id="101" type="button">
+				<width>auto</width>
+				<height>104</height>
+				<font>Light48</font>
+				<label>BROWSE</label>
+				<textcolor>defffefe</textcolor>
+				<focusedcolor>ff50a7eb</focusedcolor>
+				<texturenofocus colordiffuse="$VAR[ButtonColor]" border="1,1,1,5">aftv2/heading_unfocused.png</texturenofocus>
+				<texturefocus border="1,1,1,5">aftv2/heading_focused.png</texturefocus>
+			</control>
+			<control id="102" type="button">
+				<width>auto</width>
+				<height>104</height>
+				<font>Light48</font>
+				<label>RECENTS</label>
+				<textcolor>defffefe</textcolor>
+				<focusedcolor>ff50a7eb</focusedcolor>
+				<texturenofocus/>
+				<texturefocus border="1,1,1,5">aftv2/heading_focused.png</texturefocus>
+			</control>
+			<control id="103" type="button">
+				<width>auto</width>
+				<height>104</height>
+				<font>Light48</font>
+				<label>MY MUSIC</label>
+				<textcolor>defffefe</textcolor>
+				<focusedcolor>ff50a7eb</focusedcolor>
+				<texturenofocus/>
+				<texturefocus border="1,1,1,5">aftv2/heading_focused.png</texturefocus>
+			</control>
+			<control id="104" type="button">
+				<width>auto</width>
+				<height>104</height>
+				<font>Light48</font>
+				<label>SEARCH</label>
+				<textcolor>defffefe</textcolor>
+				<focusedcolor>ff50a7eb</focusedcolor>
+				<texturenofocus/>
+				<texturefocus border="1,1,1,5">aftv2/heading_focused.png</texturefocus>
+			</control>
+		</control>
+		<!-- Groups -->
+		<control type="grouplist" id="200">
+			<left>0</left>
+			<top>169</top>
+			<height>911</height>
+			<onup>100</onup>
+			<ondown>noop</ondown>
+			<itemgap>-52</itemgap>
+			<orientation>vertical</orientation>
+			<usecontrolcoords>true</usecontrolcoords>
+			<visible>Control.HasFocus(101) | ControlGroup(200).HasFocus</visible>
+			<scrolltime easing="out" tween="circle">240</scrolltime>
+			<include content="DefaultHeading">
+				<param name="Heading" value="Your Artists"/>
+				<param name="HeadingID" value="210"/>
+			</include>
+			<include content="DefaultList">
+				<param name="ListID" value="201"/>
+				<param name="OnUp" value="100"/>
+				<param name="OnDown" value="202"/>
+				<param name="ContentTarget" value="music"/>
+				<param name="ListContent" value="musicdb://artists/"/>
+			</include>
+			<include content="DefaultHeading">
+				<param name="Heading" value="Your Albums"/>
+				<param name="HeadingID" value="220"/>
+			</include>
+			<include content="DefaultList">
+				<param name="ListID" value="202"/>
+				<param name="OnUp" value="201"/>
+				<param name="OnDown" value="203"/>
+				<param name="ContentTarget" value="music"/>
+				<param name="ListContent" value="musicdb://albums/"/>
+			</include>
+			<include content="DefaultHeading">
+				<param name="Heading" value="Your Genres"/>
+				<param name="HeadingID" value="230"/>
+			</include>
+			<include content="DefaultList">
+				<param name="ListID" value="203"/>
+				<param name="OnUp" value="202"/>
+				<param name="OnDown" value="204"/>
+				<param name="ContentTarget" value="music"/>
+				<param name="ListContent" value="musicdb://genres/"/>
+			</include>
+			<include content="DefaultHeading">
+				<param name="Heading" value="Your Songs"/>
+				<param name="HeadingID" value="240"/>
+			</include>
+			<include content="DefaultList">
+				<param name="ListID" value="204"/>
+				<param name="OnUp" value="203"/>
+				<param name="OnDown" value="noop"/>
+				<param name="ContentTarget" value="music"/>
+				<param name="ListContent" value="special://skin/extras/music/YourSongs.xsp"/>
+			</include>
+		</control>
+	</controls>
+</window>

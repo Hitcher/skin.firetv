@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window>
+	<!-- busydialog -->
+	<controls>
+		<!-- Background -->
+		<include>DialogBackgroundImage</include>
+		<!-- Busy -->
+		<control type="image">
+			<centerleft>50%</centerleft>
+			<centertop>50%</centertop>
+			<width>122</width>
+			<height>122</height>
+			<texture>common/spinner.gif</texture>
+		</control>
+	</controls>
+</window>
