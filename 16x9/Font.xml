@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <fonts>
 	<fontset id="Default" unicode="true">
+		<!-- Thin -->
+		<font>
+			<name>Thin52</name>
+			<filename>Amazon-Ember-Thin.ttf</filename>
+			<size>52</size>
+		</font>
+		
+		<!-- Light -->
+		<font>
+			<name>Light28</name>
+			<filename>Amazon-Ember-Light.ttf</filename>
+			<size>28</size>
+		</font>
+		
+		<!-- Regular -->
+		<font>
+			<name>Reg32Spaced</name>
+			<filename>Amazon-Ember-Regular.ttf</filename>
+			<size>32</size>
+			<linespacing>1.06</linespacing>
+		</font>
+		
+		
+		
+		<!-- Old -->
 		<!-- OSD -->
 		<font>
 			<name>OSD40</name>
@@ -179,6 +204,12 @@
 			<name>Light24</name>
 			<filename>Amazon-Ember-Light.ttf</filename>
 			<size>24</size>
+		</font>
+		<font>
+			<name>Light24Spaced</name>
+			<filename>Amazon-Ember-Light.ttf</filename>
+			<size>24</size>
+			<linespacing>1.5</linespacing>
 		</font>
 		<font>
 			<name>Light23</name>

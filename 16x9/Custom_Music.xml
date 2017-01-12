@@ -15,7 +15,7 @@
 			<top>42</top>
 			<height>104</height>
 			<onup>noop</onup>
-			<ondown>200</ondown>
+			<ondown>SetFocus(201,0)</ondown>
 			<itemgap>80</itemgap>
 			<scrolltime>0</scrolltime>
 			<orientation>horizontal</orientation>

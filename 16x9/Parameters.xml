@@ -1,4 +1,64 @@
 <includes>
+	<include name="HomeDefaultList">
+		<control type="fixedlist" id="$PARAM[ListID]">
+			<left>-236</left>
+			<width>2158</width>
+			<height>251</height>
+			<onup>SetFocus($PARAM[OnUp])</onup>
+			<ondown>$PARAM[OnDown]</ondown>
+			<onleft>noop</onleft>
+			<onright>noop</onright>
+			<preloaditems>2</preloaditems>
+			<focusposition>1</focusposition>
+			<orientation>horizontal</orientation>
+			<scrolltime easing="inout" tween="cubic">300</scrolltime>
+			<animation type="Conditional" condition="!Control.HasFocus($PARAM[ListID])" reversible="true">
+				<effect type="slide" start="0,0" end="-103,0" time="200" tween="cubic" easing="out" />
+			</animation>
+			<animation effect="slide" end="0,327" time="300" reversible="false" condition="ControlGroup(200).HasFocus($PARAM[OnDown])">Conditional</animation>
+			<animation effect="fade" start="100" end="0" time="200" tween="cubic" easing="out" reversible="true" condition="ControlGroup(200).HasFocus($PARAM[OnDown])">Conditional</animation>
+			<itemlayout height="251" width="344">
+				<control type="image">
+					<left>4</left>
+					<top>31</top>
+					<width>336</width>
+					<height>189</height>
+					<texture>$VAR[WideArt]</texture>
+					<aspectratio>scale</aspectratio>
+				</control>
+			</itemlayout>
+			<focusedlayout height="251" width="439">
+				<control type="image">
+					<left>-4</left>
+					<width>447</width>
+					<height>251</height>
+					<texture>$VAR[WideArt]</texture>
+					<aspectratio>scale</aspectratio>
+					<animation type="Focus" condition="Container($PARAM[ListID]).OnNext" reversible="false">
+						<effect type="zoom" center="auto" start="75" end="100" time="300" tween="cubic" easing="out" />
+						<effect type="slide" start="60,0" end="0,0" time="300" tween="cubic" easing="out" />
+					</animation>
+					<animation type="UnFocus" condition="Container($PARAM[ListID]).OnNext" reversible="false">
+						<effect type="zoom" center="auto" start="100" end="75" time="300" tween="cubic" easing="out" />
+						<effect type="slide" start="0,0" end="-64,0" time="300" tween="cubic" easing="out" />
+					</animation>
+					<animation type="Conditional" condition="!Control.HasFocus($PARAM[ListID])" reversible="true">
+						<effect type="zoom" center="auto" start="100" end="75" time="200" tween="cubic" easing="out" />
+						<effect type="slide" start="0,0" end="64,0" time="200" tween="cubic" easing="out" />
+					</animation>
+					<animation type="Focus" condition="Container($PARAM[ListID]).OnPrevious" reversible="false">
+						<effect type="zoom" center="auto" start="75" end="100" time="300" tween="cubic" easing="out" />
+						<effect type="slide" start="-64,0" end="0,0" time="300" tween="cubic" easing="out" />
+					</animation>
+					<animation type="UnFocus" condition="Container($PARAM[ListID]).OnPrevious" reversible="false">
+						<effect type="zoom" center="auto" start="100" end="75" time="300" tween="cubic" easing="out" />
+						<effect type="slide" start="-96,0" end="-64,0" time="300" tween="cubic" easing="out" />
+					</animation>
+				</control>
+			</focusedlayout>
+			<content sortby="$PARAM[ContentSortBy]" sortorder="$PARAM[ContentSortOrder]" target="$PARAM[ContentTarget]">$PARAM[ListContent]</content>
+		</control>
+	</include>
 	<include name="DefaultHeading">
 		<control type="label" id="$PARAM[HeadingID]">
 			<left>96</left>
@@ -10,7 +70,7 @@
 		</control>
 	</include>
 	<include name="DefaultList">
-		<control type="list" id="$PARAM[ListID]">
+		<control type="fixedlist" id="$PARAM[ListID]">
 			<left>0</left>
 			<width>1920</width>
 			<height>474</height>
@@ -19,6 +79,8 @@
 			<onleft>noop</onleft>
 			<onright>noop</onright>
 			<preloaditems>2</preloaditems>
+			<focusposition>1</focusposition>
+			<movement>1</movement>
 			<orientation>horizontal</orientation>
 			<scrolltime easing="out" tween="circle">240</scrolltime>
 			<itemlayout height="422" width="568">
@@ -51,6 +113,31 @@
 						<aligny>center</aligny>
 						<wrapmultiline>true</wrapmultiline>
 						<label>$INFO[ListItem.Label]</label>
+						<visible>String.IsEmpty(ListItem.Album)</visible>
+					</control>
+					<control type="textbox">
+						<left>356</left>
+						<top>4</top>
+						<width>246</width>
+						<height>422</height>
+						<font>Light36</font>
+						<textcolor>ffdadada</textcolor>
+						<aligny>center</aligny>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Label][CR][COLOR 00ffffff]$INFO[ListItem.Artist][/COLOR]</label>
+						<visible>!String.IsEmpty(ListItem.Album)</visible>
+					</control>
+					<control type="textbox">
+						<left>356</left>
+						<top>4</top>
+						<width>164</width>
+						<height>422</height>
+						<font>Light24Spaced</font>
+						<textcolor>ff808288</textcolor>
+						<aligny>center</aligny>
+						<wrapmultiline>true</wrapmultiline>
+						<label>[COLOR 00ffffff]$INFO[ListItem.Label][/COLOR][CR]$INFO[ListItem.Artist]</label>
+						<visible>!String.IsEmpty(ListItem.Album)</visible>
 					</control>
 				</control>
 			</itemlayout>
@@ -86,6 +173,31 @@
 						<aligny>center</aligny>
 						<wrapmultiline>true</wrapmultiline>
 						<label>$INFO[ListItem.Label]</label>
+						<visible>String.IsEmpty(ListItem.Album)</visible>
+					</control>
+					<control type="textbox">
+						<left>356</left>
+						<top>4</top>
+						<width>246</width>
+						<height>422</height>
+						<font>Light36</font>
+						<textcolor>bf000202</textcolor>
+						<aligny>center</aligny>
+						<wrapmultiline>true</wrapmultiline>
+						<label>$INFO[ListItem.Label][CR][COLOR 00ffffff]$INFO[ListItem.Artist][/COLOR]</label>
+						<visible>!String.IsEmpty(ListItem.Album)</visible>
+					</control>
+					<control type="textbox">
+						<left>356</left>
+						<top>4</top>
+						<width>164</width>
+						<height>422</height>
+						<font>Light24Spaced</font>
+						<textcolor>ff20435e</textcolor>
+						<aligny>center</aligny>
+						<wrapmultiline>true</wrapmultiline>
+						<label>[COLOR 00ffffff]$INFO[ListItem.Label][/COLOR][CR]$INFO[ListItem.Artist]</label>
+						<visible>!String.IsEmpty(ListItem.Album)</visible>
 					</control>
 				</control>
 				<control type="group">
@@ -122,7 +234,7 @@
 					</control>
 				</control>
 			</focusedlayout>
-			<content target="$PARAM[ContentTarget]">$PARAM[ListContent]</content>
+			<content limit="6" target="$PARAM[ContentTarget]">$PARAM[ListContent]</content>
 		</control>
 	</include>
 	<include name="DialogConfirm">
